@@ -1,0 +1,22 @@
+{% load static %}
+<header>
+    <nav class="navbar">
+        <div class="nav_logo cc">Flowstate</div>
+        <div class="nav_user cc">
+        {% if request.user.is_authenticated %}
+            <div class="user_img"><img src="{% static 'images/user_image.png'%}" alt="" width="36px" height="36px"></div>
+                <div class="user">
+                    <a class="name" href="#">Prabhakar Mishra</a><br>
+                    <a class="user_name" href="#">@_p_mishra</a>
+                </div>
+            <div class="dropdown_icon"><i class="fa-solid fa-caret-down"></i></div>
+            
+        {% else %}
+            <a href="#" class="user">
+                <img src="{% static 'images/avatar.svg'%}"alt="" width="36px" height="36px" />
+                <p>Login</p>
+            </a>
+        {% endif %}
+        </div>
+    </nav>
+</header>
