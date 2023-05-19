@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     #my_apps
     'userApp',
+    'coreApp',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
         },
     },
 ]
+AUTH_USER_MODEL = 'userApp.User'
 
 WSGI_APPLICATION = 'FlowState.wsgi.application'
 
@@ -124,3 +126,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+YOUTUBE_DATA_API_KEY = 'AIzaSyC0zIz9GmnfDnb9oLxkTBiBQ5rV81dZZm4'
