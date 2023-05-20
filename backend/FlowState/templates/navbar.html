@@ -1,7 +1,7 @@
 {% load static %}
 <header>
     <nav class="navbar">
-        <div class="nav_logo cc">Flowstate</div>
+        <a href="{% url 'home' %}" class="nav_logo cc">Flowstate</a>
         <div class="nav_user cc">
         {% if request.user.is_authenticated %}
             <div class="user_img"><img src="{% static 'images/user_image.png'%}" alt="" width="36px" height="36px"></div>
@@ -12,7 +12,7 @@
             <div class="dropdown_icon"><i class="fa-solid fa-caret-down"></i></div>
             
         {% else %}
-            <a href="#" class="user">
+            <a href="{% url 'login' %}" class="user">
                 <img src="{% static 'images/avatar.svg'%}"alt="" width="36px" height="36px" />
                 <p>Login</p>
             </a>

@@ -46,10 +46,12 @@ def myregister(request):
         gender = request.POST.get("gender")
         phone = request.POST.get("phone")
         dob = request.POST.get("dob")
-        courseOrField = request.POST.get("courseOrField")
-        bio = request.POST.get("bio")
-        location = request.POST.get("location")
         
+        # try:
+        #     courseOrField = request.POST.get("courseOrField")
+        #     bio = request.POST.get("bio")
+        #     location = request.POST.get("location")
+        # except:
 
         user_obj = User.objects.filter(username=username)
         if user_obj.exists():
@@ -64,13 +66,13 @@ def myregister(request):
                 request, "Password and confirm password do not match."
             )  # recorded
             return redirect("/register/")
-        user_obj = User(username=username, email=email,dob = dob,courseOrField = courseOrField,gender = gender ,first_name = fname, last_name = lname,phone_num = phone,location = location,bio = bio)
+        user_obj = User(username=username, email=email,dob = dob,gender = gender ,first_name = fname, last_name = lname,phone_num = phone)
         user_obj.set_password(password)
         user_obj.save()
         # registration_mail(email)
         messages.success(request, "Your account has been created.")
         return redirect("/login/")  # recorded
-    return render(request, "myregister.html")
+    return render(request, "signup.html")
 
 
 # def home(request):
@@ -86,6 +88,9 @@ def myLogout(request):
     logout(request)
     print("Logged out successful")
     return redirect("/")
+
+def task(request):
+    return render(request,'task.html')
 
 
 # @login_required(login_url="/login")
