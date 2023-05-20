@@ -1,4 +1,52 @@
 {% load static %}
+
+<!-- <style>
+
+  
+    
+  .dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  /* .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+    background-color: rgb(14, 4, 4);
+  } */
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .show {
+    display: block;
+  }
+  </style> -->
+
 <header>
     <nav class="navbar">
         <a href="{% url 'home' %}" class="nav_logo cc">Flowstate</a>
@@ -7,9 +55,21 @@
             <div class="user_img"><img src="{% static 'images/user_image.png'%}" alt="" width="36px" height="36px"></div>
                 <div class="user">
                     <a class="name" href="#">Prabhakar Mishra</a><br>
-                    <a class="user_name" href="#">@_p_mishra</a>
+                    <a class="user_name" href="#">{{user}}</a>
                 </div>
-            <div class="dropdown_icon"><i class="fa-solid fa-caret-down"></i></div>
+
+                
+            
+            
+                <div class="dropdown">
+                  <button class="dropbtn">
+                    <div class="dropdown_icon"><i class="fa-solid fa-caret-down"></i></div>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="/logout">Log Out</a>
+                  </div>
+                </div>
+            
             
         {% else %}
             <a href="{% url 'login' %}" class="user">
