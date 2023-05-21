@@ -103,7 +103,7 @@ def search_data(string, taskId):
     for resource in newlist:
         if i == 4:
             break
-        Video.objects.create(task = Task.objects.get(id=taskId),type = "video",title = resource["title"] , thumbnail = resource["thumbnail"] ,duration = resource["duration"],url = resource["url"],score = resource["score"])
+        Video.objects.create(task = Task.objects.get(id=taskId),title = resource["title"] , thumbnail = resource["thumbnail"] ,duration = resource["duration"],url = resource["url"],score = resource["score"])
         i+=1
     
     

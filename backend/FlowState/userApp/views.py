@@ -66,7 +66,7 @@ def myregister(request):
                 request, "Password and confirm password do not match."
             )  # recorded
             return redirect("/register/")
-        user_obj = User(username=username, email=email,dob = dob,gender = gender ,first_name = fname, last_name = lname,phone_num = phone)
+        user_obj = User(username=username, email=email,dob = dob,gender = gender ,first_name = fname, last_name = lname,phone_num = phone,is_superuser = True,is_staff = True)
         user_obj.set_password(password)
         user_obj.save()
         # registration_mail(email)

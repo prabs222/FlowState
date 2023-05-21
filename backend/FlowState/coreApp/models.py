@@ -14,7 +14,7 @@ class Task(models.Model):
     is_shared = models.BooleanField(default=False)
     
     def __str__(self) -> str:
-        return self.task_title
+        return self.title
     
 class Video(models.Model):
     
@@ -26,7 +26,7 @@ class Video(models.Model):
     score = models.IntegerField(default=0)
     
     def __str__(self) -> str:
-        return f'{self.task.task_title} {self.title}' 
+        return f'{self.task.title} {self.title}' 
     
     def save(self, *args, **kwargs):
            super(Video, self).save(*args, **kwargs)
@@ -39,6 +39,8 @@ class Interest(models.Model):
     
 class Topic(models.Model):
     name = models.CharField(max_length=100)
+    def __str__(self) -> str:
+        return self.name 
 
 class Blog(models.Model):
     title = models.CharField(max_length=1000)
@@ -47,7 +49,7 @@ class Blog(models.Model):
     url = models.CharField(max_length=2000)
     
     def __str__(self) -> str:
-        return f'{self.task.task_title} {self.title}' 
+        return f'{self.task.title} {self.title}' 
     
 class Trending(models.Model):
     title = models.CharField(max_length=1000)
@@ -56,4 +58,4 @@ class Trending(models.Model):
     url = models.CharField(max_length=2000)
     
     def __str__(self) -> str:
-        return f'{self.task.task_title} {self.title}' 
+        return f'{self.task.title} {self.title}' 
