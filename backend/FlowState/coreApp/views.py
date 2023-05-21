@@ -11,7 +11,8 @@ from coreApp.scripts.techNewsAPI import getTechNews
 
 
 # Create your views here.
-
+#hot_topics
+hot_topics = getTechNews()
 
 @login_required(login_url="/login/")
 def tasks(request):
@@ -28,7 +29,7 @@ def tasks(request):
         recent_tasks = Task.objects.filter(user=request.user).order_by("-created_at")
         print(tasks)
         # context={"blogs": blogs, "page_obj": blogs, "recent_blogs": recent_blogs}
-        context = {"tasks": tasks , "page_obj": tasks,"recent_tasks": recent_tasks}
+        context = {"tasks": tasks , "page_obj": tasks,"recent_tasks": recent_tasks,'hot_topics':hot_topics}
         return render(request, "task.html",context)
     
     if request.method == "POST":
@@ -109,7 +110,7 @@ def home(request):
         
         
     #blogs
-    topic_names = ["django","python"]   
+    topic_names = ["django","python","java",]   
     
     
     
