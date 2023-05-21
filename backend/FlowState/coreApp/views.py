@@ -8,6 +8,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .search import search_data
 from coreApp.scripts.techNewsAPI import getTechNews
+from coreApp.scripts.blogs import getBlogs
+import random
 
 
 # Create your views here.
@@ -25,13 +27,22 @@ def tasks(request):
                 tasks = p.page(1)
                 
         recent_tasks = Task.objects.filter(user=request.user).order_by("-created_at")
-        print(tasks)
+        # print(tasks)
         
         #hot_topics
         hot_topics = getTechNews()
+        #blogs
+        blogs=[]
+        topicNames = ["django","python","java",] 
+        for i in topicNames:
+            blog=getBlogs(i,5)
+            blogs=blogs+blog
+        random.shuffle(blogs)
+
+        
 
         # context={"blogs": blogs, "page_obj": blogs, "recent_blogs": recent_blogs}
-        context = {"tasks": tasks , "page_obj": tasks,"recent_tasks": recent_tasks,'hot_topics':hot_topics}
+        context = {"tasks": tasks , "page_obj": tasks,"recent_tasks": recent_tasks,'hot_topics':hot_topics,"blogs":blogs}
         return render(request, "task.html",context)
     
     if request.method == "POST":
@@ -110,15 +121,20 @@ def home(request):
     #hot_topics
     hot_topics = getTechNews()
         
-        
     #blogs
-    topic_names = ["django","python","java",]   
+    blogs=[]
+    topicNames = ["django","python","java",] 
+    for i in topicNames:
+        blog=getBlogs(i,5)
+        blogs=blogs+blog
+    random.shuffle(blogs)
+    
     
     
     
     try:    
         # context = {"videos":  resource_obj, "tasks": today_tasks,"tvideos": videos}
-        context = {"tvideos":videos,"hot_topics":hot_topics}
+        context = {"tvideos":videos,"hot_topics":hot_topics,"blogs":blogs}
     except:
         context = {"videos": ""}
     print("********************************")
