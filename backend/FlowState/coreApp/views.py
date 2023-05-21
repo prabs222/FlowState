@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .search import search_data
+from coreApp.scripts.techNewsAPI import getTechNews
+
 
 # Create your views here.
 
@@ -103,8 +105,7 @@ def home(request):
         resource_obj.append(resources)
         
     #hot_topics
-    hot_topics = []
-        
+    hot_topics = getTechNews()
         
         
     #blogs
