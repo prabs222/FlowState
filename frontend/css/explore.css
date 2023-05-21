@@ -42,21 +42,34 @@ hr{
     flex-wrap: wrap;
 }
 .video_card{
-    background-color:#3f4156;
-    border-radius: 10px;
+    /* background-color:#3f4156;
+    border-radius: 10px; */
     /* height: 320px; */
     margin-bottom: 30px;
     margin-inline: 12px;
     padding-bottom: 20px;
     width: 240px;
-    box-shadow: 0 0 10px -3px rgb(0, 0, 0);
-    transition: box-shadow 0.3s ease-in-out;
+    /* box-shadow: 0 0 10px -3px rgb(0, 0, 0);
+    transition: box-shadow 0.3s ease-in-out; */
+    --border: 5px;   
+    --slant: 0.7em;   
+    --color: #17171fa4; 
+    border: none;
+    color: var(--color);
+    background: 
+        linear-gradient(to bottom left,var(--color)  50%,#0000 50.1%) top right,
+        linear-gradient(to top   right,var(--color)  50%,#0000 50.1%) bottom left;
+    background-size: calc(var(--slant) + -1.7*var(--border)) calc(var(--slant) + -1.7*var(--border));
+    background-repeat: no-repeat;
+    transition: color var(--t,0.3s), background-size 0.3s;
 }
 .video_card:hover{
-    /* height: 305px; */
+    box-sizing: border-box;
     background-color: #3f4156b1;
-    /* box-shadow: 0 0 5px 1px #71c6dd; */
     box-shadow: 0 0 10px 1px black;
+    background-size: 100% 100%;
+    color: black;
+    --t: 0.2s 0.1s;
 }
 .video_img{
     /* background-color: #71c6dd; */
