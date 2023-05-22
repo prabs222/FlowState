@@ -100,11 +100,10 @@ def home(request):
     random.shuffle(blogs)
     
     result=[]
-    for i in topics:
-        result=result+search_data(i,2)
+    # for i in topics:
+    #     result=result+search_data(i,2)
 
     print(result)
-
     
     try:    
         # context = {"videos":  resource_obj, "tasks": today_tasks,"tvideos": videos}
