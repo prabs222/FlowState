@@ -2,6 +2,15 @@
 
 
 <header>
+  {% if messages %}
+  {% for message in messages %}
+  <script> alert('{{ message }}');
+  </script>
+      {{message}}
+  </div>
+  {% endfor %}
+{% endif %}
+
     <nav class="navbar">
         <a href="{% url 'home' %}" class="nav_logo cc">Flowstate</a>
         <div class="nav_user cc">
