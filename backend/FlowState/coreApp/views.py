@@ -99,15 +99,12 @@ def home(request):
         blogs=blogs+blog
     random.shuffle(blogs)
     
-<<<<<<< HEAD
     result=[]
     for i in topics:
         result=result+search_data(i,2)
 
     print(result)
 
-=======
->>>>>>> 32677113b6752c2e86e821793c659ae387d0c782
     
     try:    
         # context = {"videos":  resource_obj, "tasks": today_tasks,"tvideos": videos}
@@ -119,4 +116,5 @@ def home(request):
     # resources = Resource.objects.filter(tas)
     return render(request, "index.html",context)
 
-    
+def community(request):
+    return render(request, "community.html")
