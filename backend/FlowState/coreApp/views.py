@@ -69,6 +69,41 @@ def tasks(request):
     return render(request, "task.html")
 
 
+
+@login_required(login_url="/login/")
+def planYourDay(request):
+    tasks = Task.objects.filter(user =request.user,created_at__gte = datetime.datetime.now().date())
+    if(tasks.count()!=0):
+        page = request.GET.get("page", 1)
+        p = Paginator(tasks, 6)
+        try:
+            tasks = p.page(page)
+        except:
+            tasks = p.page(1)
+    recent_tasks = Task.objects.filter(user=request.user).order_by("-created_at")
+    print(tasks)
+    # context={"blogs": blogs, "page_obj": blogs, "recent_blogs": recent_blogs}
+    context = {"tasks": tasks , "page_obj": tasks,"recent_tasks": recent_tasks}
+    return render(request, "planYourDay.html",context)
+
+@login_required(login_url="/login/")
+def addTask(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        obj = Task.objects.create(user = User.objects.get(username = request.user.username), title=title, description=description)
+        # registration_mail(email)
+        task_id = obj.id
+        query_string = title
+        try:
+            search_data(query_string,task_id)
+        except Exception as e:
+            messages.success(request, "Please enter a descriptive task ")
+            return redirect("/addTask/")  # recorded
+        messages.success(request, "Your task has been added.")
+        return redirect("/planYourDay/")  # recorded
+    return render(request, "addTask.html")
+
 @login_required(login_url="/login")
 def home(request):
     context= []
@@ -99,15 +134,12 @@ def home(request):
         blogs=blogs+blog
     random.shuffle(blogs)
     
-<<<<<<< HEAD
     result=[]
     for i in topics:
         result=result+search_data(i,2)
 
     print(result)
 
-=======
->>>>>>> 32677113b6752c2e86e821793c659ae387d0c782
     
     try:    
         # context = {"videos":  resource_obj, "tasks": today_tasks,"tvideos": videos}
