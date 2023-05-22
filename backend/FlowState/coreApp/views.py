@@ -116,4 +116,19 @@ def home(request):
     return render(request, "index.html",context)
 
 def community(request):
-    return render(request, "community.html")
+    hot_topics = getTechNews()
+        
+    #blogs
+    blogs=[]
+    topicNames = ["django","python","java",] 
+    for i in topicNames:
+        blog=getBlogs(i,5)
+        blogs=blogs+blog
+    random.shuffle(blogs)
+    try:    
+        # context = {"videos":  resource_obj, "tasks": today_tasks,"tvideos": videos}
+        context = {"hot_topics":hot_topics,"blogs":blogs}
+    except:
+        context = {"videos": ""}
+
+    return render(request, "community.html",context)
