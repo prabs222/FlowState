@@ -9,10 +9,13 @@ from django.contrib.auth.decorators import login_required
 from .search import search_data
 from coreApp.scripts.techNewsAPI import getTechNews
 from coreApp.scripts.blogs import getBlogs
+from coreApp.scripts.randomVideos import search_data
 import random
 
 
 # Create your views here.
+
+topics=['django','python','java','node','sql','oops in java','binary tree','sparse matrix']
 
 @login_required(login_url="/login/")
 def tasks(request):
@@ -33,7 +36,7 @@ def tasks(request):
         hot_topics = getTechNews()
         #blogs
         blogs=[]
-        topicNames = ["django","python","java",] 
+        topicNames = ["django"] 
         for i in topicNames:
             blog=getBlogs(i,5)
             blogs=blogs+blog
@@ -96,14 +99,24 @@ def home(request):
         blogs=blogs+blog
     random.shuffle(blogs)
     
+<<<<<<< HEAD
+    result=[]
+    for i in topics:
+        result=result+search_data(i,2)
+
+    print(result)
+
+=======
+>>>>>>> 32677113b6752c2e86e821793c659ae387d0c782
     
     try:    
         # context = {"videos":  resource_obj, "tasks": today_tasks,"tvideos": videos}
-        context = {"tvideos":videos,"hot_topics":hot_topics,"blogs":blogs}
+        context = {"tvideos":videos,"hot_topics":hot_topics,"blogs":blogs,'randomVideos':result}
     except:
         context = {"videos": ""}
     print("********************************")
     print(context)
     # resources = Resource.objects.filter(tas)
     return render(request, "index.html",context)
+
     

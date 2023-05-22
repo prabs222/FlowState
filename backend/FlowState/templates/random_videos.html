@@ -2,41 +2,18 @@
 <div class="random_videos">
     <div class="random_title">Other videos</div>
     <div class="random_videos_container">
-        <a href="#">
+    {%for i in randomVideos%}
+        <a href="{{i.url}}">
             <div class="video_card">
-                <div class="video_img"><img src="{% static 'images/user_image.png'%}" alt="" width="239px" height="140px"></div>
-                <div class="video_title">Django-The perfect course</div>
+                <div class="video_img"><img src="{{i.thumbnail}}" alt="" width="239px" height="140px"></div>
+                <div class="video_title">{{i.title}}</div>
                 <hr>
-                <div class="video_desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus animi excepturi provident pariatur odit harum.</div>
                 <div class="video_duration">
                     <span class="eye"><i class="fa-regular fa-eye"></i>12K</span>
                     <span class="clock"><i class="fa-regular fa-clock"></i>1:2:56</span>
                 </div>
             </div>
         </a>
-        <a href="#">
-            <div class="video_card">
-                <div class="video_img"><img src="{% static 'images/user_image.png'%}" alt="" width="239px" height="140px"></div>
-                <div class="video_title">Django-The perfect course</div>
-                <hr>
-                <div class="video_desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus animi excepturi provident pariatur odit harum.</div>
-                <div class="video_duration">
-                    <span class="eye"><i class="fa-regular fa-eye"></i>12K</span>
-                    <span class="clock"><i class="fa-regular fa-clock"></i>1:2:56</span>
-                </div>
-            </div>
-        </a>
-        <a href="#">
-            <div class="video_card">
-                <div class="video_img"><img src="{% static 'images/user_image.png'%}" alt="" width="239px" height="140px"></div>
-                <div class="video_title">Django-The perfect course</div>
-                <hr>
-                <div class="video_desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus animi excepturi provident pariatur odit harum.</div>
-                <div class="video_duration">
-                    <span class="eye"><i class="fa-regular fa-eye"></i>12K</span>
-                    <span class="clock"><i class="fa-regular fa-clock"></i>1:2:56</span>
-                </div>
-            </div>
-        </a>
+        {%endfor%}
     </div>
 </div>
