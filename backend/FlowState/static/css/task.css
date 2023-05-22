@@ -8,7 +8,7 @@
     color: #71c6dd;
 }
 .add_task{
-    background-color: #3F4156;
+    background-color: #181820;
     margin-inline: 30px;
     padding:30px 30px;
     color: #000;
@@ -68,19 +68,16 @@
     height: 6vh;
     width: 10vw;
     background-color: #0c0c0c;
-    color: #03e9f4;
+    color: white;
     font-weight: bold;
     border: none;
     border-radius: 5px;
-    letter-spacing: 4px;
     overflow: hidden;
     transition: 0.5s;
     cursor: pointer;
 }
 #sub_task:hover{
-    background: #03e9f4;
-      color: #050801;
-      box-shadow: 0 0 1px #03e9f4, 0 0 8px #03e9f4, 0 0 15px #03e9f4, 0 0 30px #03e9f4;
+    box-shadow: 0 0 10px 1px #9696a3;
 }
 .task_card_container{
     margin-inline: 30px;
@@ -91,14 +88,14 @@
 }
 .task_card{
     padding: 20px 30px;
-    background-color: #3F4156;
+    background-color: #18192b;
     width: 22vw;
     border-radius: 10px;
     box-shadow: 0 0 10px -3px rgb(0, 0, 0);
     transition: box-shadow 0.3s ease-in-out;
 }
 .task_card:hover{
-    background-color: #3f4156b1;
+    background-color: #20222d;
     box-shadow: 0 0 10px 1px black;
 }
 .task_card_title{
