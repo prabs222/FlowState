@@ -12,32 +12,19 @@
             {%endfor%}
         </div>
     </div>
-    
+
     <hr id="right_sidebar_hr">
     <div class="blogs">
         <div class="blog_head">Blogs</div>
+        {%for i in blogs%}
         <div class="blog_container">
-            <a href="#">
+            <a href="{{i.url}}">
                 <div class="blog_content">
-                <div class="blog_title">Blog Title</div>
-                <div class="site_name">www.geeksforgeeks.com</div>
-                <div class="blog_desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam assumenda tenetur vel corporis natus veritatis labore repellendus, maxime consequuntur culpa?</div>
-                </div>
-            </a>
-            <a href="#">
-                <div class="blog_content">
-                <div class="blog_title">Blog Title</div>
-                <div class="site_name">www.geeksforgeeks.com</div>
-                <div class="blog_desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam assumenda tenetur vel corporis natus veritatis labore repellendus, maxime consequuntur culpa?</div>
-                </div>
-            </a>
-            <a href="#">
-                <div class="blog_content">
-                <div class="blog_title">Blog Title</div>
-                <div class="site_name">www.geeksforgeeks.com</div>
-                <div class="blog_desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam assumenda tenetur vel corporis natus veritatis labore repellendus, maxime consequuntur culpa?</div>
+                <div class="blog_title">{{i.title}}</div>
+                <div class="site_name">{{i.url}}</div>
                 </div>
             </a>
         </div>
+        {%endfor%}
     </div>
 </div>
