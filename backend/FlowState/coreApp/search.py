@@ -58,8 +58,12 @@ def search_data(string, taskId):
         }   
     
         r2 = requests.get(comment_url, params=comment_params)
-
-        results2 = r2.json()['items']
+        print("****************")
+        print(r2.json())
+        try:
+            results2 = r2.json()['items']
+        except:
+            continue
         
         for result2 in results2:
             comment_data = {
