@@ -12,7 +12,7 @@
 {% endif %}
 
     <nav class="navbar">
-        <a href="{% url 'home' %}" class="nav_logo cc">Flowstate</a>
+        <a href="{% url 'home' %}" class="nav_logo cc"><img src="{% static 'images/logo_img.png'%}" alt="" width="36px" height="36px" style="margin-right: 10px;"> Flowstate</a>
         <div class="nav_user cc">
         {% if request.user.is_authenticated %}
             <div class="user_img"><img src="{% static 'images/user_image.png'%}" alt="" width="36px" height="36px"></div>
