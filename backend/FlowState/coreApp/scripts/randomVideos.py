@@ -13,7 +13,9 @@ def search_data(string,counter):
         'type' : 'video'
     }
     response=requests.get(search_url,params=search_params)
+    print(response.json())
     results=response.json()['items']
+
 
     random_videos=[]
     for i in results:

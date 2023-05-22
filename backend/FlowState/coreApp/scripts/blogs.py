@@ -1,8 +1,8 @@
 import requests
 
 def getBlogs(query,count):
-    api_key = "AIzaSyC0zIz9GmnfDnb9oLxkTBiBQ5rV81dZZm4"
-    cx = "927961f1d4283401f"
+    api_key = "AIzaSyCP6ULkOoKe244l89UDH7PrD_8H3an_sG4"
+    cx = "a44211d4b08b84178"
     url = "https://www.googleapis.com/customsearch/v1"
 
     params = {
