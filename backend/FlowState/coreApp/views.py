@@ -135,10 +135,10 @@ def home(request):
     random.shuffle(blogs)
     
     result=[]
-    # for i in topics:
-    #     result=result+search_data(i,2)
+    for i in topics:
+        result=result+search_data(i,2)
 
-    # print(result)
+    print(result)
 
     
     try:    
