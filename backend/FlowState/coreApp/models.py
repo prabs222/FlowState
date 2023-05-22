@@ -59,3 +59,14 @@ class Trending(models.Model):
     
     def __str__(self) -> str:
         return f'{self.task.title} {self.title}' 
+    
+class Post(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    images = models.ImageField(upload_to = 'posts/images/', default='default.png',blank=True,null=True)
+    body = models.TextField()
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes')
+
+    def __str__(self) -> str:
+        return f'{self.user} {self.body[:50]}'

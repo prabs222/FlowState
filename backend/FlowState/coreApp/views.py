@@ -116,19 +116,32 @@ def home(request):
     return render(request, "index.html",context)
 
 def community(request):
-    hot_topics = getTechNews()
+    if request.method == 'GET':
+        posts =  Post.objects.all()
         
-    #blogs
-    blogs=[]
-    topicNames = ["django","python","java",] 
-    for i in topicNames:
-        blog=getBlogs(i,5)
-        blogs=blogs+blog
-    random.shuffle(blogs)
-    try:    
-        # context = {"videos":  resource_obj, "tasks": today_tasks,"tvideos": videos}
-        context = {"hot_topics":hot_topics,"blogs":blogs}
-    except:
-        context = {"videos": ""}
-
+        hot_topics = getTechNews()
+            
+        #blogs
+        blogs=[]
+        topicNames = ["django","python","java",] 
+        for i in topicNames:
+            blog=getBlogs(i,5)
+            blogs=blogs+blog
+        random.shuffle(blogs)
+        try:    
+            # context = {"videos":  resource_obj, "tasks": today_tasks,"tvideos": videos}
+            context = {"hot_topics":hot_topics,"blogs":blogs,"posts": posts}
+        except:
+            context = {"videos": ""}
+    if request.method == "POST":
+        try:
+            body = request.POST.get("title")
+            obj = Post.objects.create(user = User.objects.get(username = request.user.username), body = body)
+        except Exception as e:
+            messages.success(request, "Something went wrong. Please try again")
+            return redirect("/core/community/")  # recorded
+        
+        messages.success(request, "You have added a post.")
+        return redirect("/core/community/")  # recorded
     return render(request, "community.html",context)
+
