@@ -42,16 +42,15 @@ hr{
     flex-wrap: wrap;
 }
 .video_card{
-    /* background-color:#3f4156;
-    border-radius: 10px; */
-    /* height: 320px; */
+    background-color:#0b0c10;
+    border-radius: 10px;
+    height: 280px;
     margin-bottom: 30px;
     margin-inline: 12px;
     padding-bottom: 20px;
     width: 240px;
-    /* box-shadow: 0 0 10px -3px rgb(0, 0, 0);
-    transition: box-shadow 0.3s ease-in-out; */
-    --border: 5px;   
+    box-shadow: 0 0 10px 1px #082a31;
+    /* --border: 5px;   
     --slant: 0.7em;   
     --color: #17171fa4; 
     border: none;
@@ -61,15 +60,16 @@ hr{
         linear-gradient(to top   right,var(--color)  50%,#0000 50.1%) bottom left;
     background-size: calc(var(--slant) + -1.7*var(--border)) calc(var(--slant) + -1.7*var(--border));
     background-repeat: no-repeat;
-    transition: color var(--t,0.3s), background-size 0.3s;
+    transition: color var(--t,0.3s), background-size 0.3s; */
+    transition: box-shadow 0.2s ease-in-out;
 }
 .video_card:hover{
-    box-sizing: border-box;
-    background-color: #3f4156b1;
-    box-shadow: 0 0 10px 1px black;
-    background-size: 100% 100%;
+
+    /* background-color: #3f4156b1; */
+    box-shadow: 0 0 10px 1px #71c6dd;
+    /* background-size: 100% 100%;
     color: black;
-    --t: 0.2s 0.1s;
+    --t: 0.2s 0.1s; */
 }
 .video_img{
     /* background-color: #71c6dd; */
