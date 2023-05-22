@@ -28,8 +28,7 @@
                     <div class="add_image">
                         <button><i class="fa-solid fa-image" style="width: 30px;color: rgb(128, 235, 235);font-size: 17px;"></i>  Photo</button>
                         <button><i class="fa-solid fa-play-circle" style="width: 30px;color: green;font-size: 17px;"></i>  Video</button>
-                        <button><i class="fa-solid fa-calendar-alt" style="width: 30px;color: rgb(255, 183, 38);font-size: 17px;"></i> Event</button>
-                        <button><i class="fa-solid fa-indent" style="width: 30px;color: rgb(248, 147, 79);font-size: 17px;"></i> Article</button>
+                        <div class="post_button">Post</div>
                     </div>
                     <!-- <div class="post_button"><button>Post</button></div> -->
                 </div>
@@ -37,7 +36,7 @@
             <div class="posted_container">
                 <div class="posted_box">
                     <div class="posted_profile_data">
-                        <div class="posted_user_profile_pic"><img src="/images/user_image.png" alt=""></div>
+                        <div class="posted_user_profile_pic"><img src="{% static 'images/user_image.png'%}" alt=""></div>
                         <div class="posted_username">
                             <h4 class="posted_username">Prabhakar Mishra</h4>
                             <p class="user_about">Web Developer, AR/VR, Backend Dev...</p>
@@ -45,13 +44,12 @@
                         </div>
                     </div>
                     <div class="posted_caption">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam repellendus minima similique ad officiis enim doloribus error quisquam suscipit iure.</div>
-                    <div class="posted_image"><img src="/images/user_image.png" alt=""></div>
+                    <!-- <div class="posted_image"><img src="/images/user_image.png" alt=""></div> -->
 
-                    <div class="post_button">
-                        <button><i class="fa-solid fa-thumbs-up" style="width: 20px;font-size: 17px;"></i>  Like</button>
-                        <button><i class="fa-solid fa-comment" style="width: 20px;font-size: 17px;"></i>  Comment</button>
-                        <button><i class="fa-solid fa-share" style="width: 20px;font-size: 17px;"></i> Share</button>
-                        
+                    <div class="posted_actions">
+                        <div class="actions"><i class="fa-solid fa-thumbs-up" style="width: 20px;font-size: 17px;"></i>  Like</div>
+                        <div class="actions"><i class="fa-solid fa-comment" style="width: 20px;font-size: 17px;"></i>  Comment</div>
+                        <div class="actions"><i class="fa-solid fa-share" style="width: 20px;font-size: 17px;"></i> Share</div>   
                     </div>
                 </div>
             </div>
