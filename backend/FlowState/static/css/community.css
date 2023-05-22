@@ -38,8 +38,13 @@
 }
 .add_image{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .add_image button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     background-color:  #181820;
     width: 10vw;
@@ -98,6 +103,7 @@
     margin-inline: 30px;
 }
 .posted_box{
+    margin-bottom: 10px;
     background-color: #191a28;
     border-radius: 10px;
     padding-inline: 20px;

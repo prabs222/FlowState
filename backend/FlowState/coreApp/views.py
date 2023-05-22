@@ -134,12 +134,12 @@ def community(request):
         except:
             context = {"videos": ""}
     if request.method == "POST":
-        try:
-            body = request.POST.get("title")
-            obj = Post.objects.create(user = User.objects.get(username = request.user.username), body = body)
-        except Exception as e:
-            messages.success(request, "Something went wrong. Please try again")
-            return redirect("/core/community/")  # recorded
+        # try:
+        body = request.POST.get("body")
+        obj = Post.objects.create(user = User.objects.get(username = request.user.username), body = body)
+        # except Exception as e:
+        # messages.success(request, "Something went wrong. Please try again")
+        return redirect("/core/community/")  # recorded
         
         messages.success(request, "You have added a post.")
         return redirect("/core/community/")  # recorded
