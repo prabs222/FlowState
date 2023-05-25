@@ -6,7 +6,7 @@ import datetime
 from django.core.paginator import Paginator
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .search import search_data
+from .search import search_task_data
 from coreApp.scripts.techNewsAPI import getTechNews
 from coreApp.scripts.blogs import getBlogs
 from coreApp.scripts.randomVideos import search_data
@@ -15,7 +15,7 @@ import random
 
 # Create your views here.
 
-topics=['django','python','java','node','sql','oops in java','binary tree','sparse matrix']
+topics=['django','python','java','node']
 
 @login_required(login_url="/login/")
 def tasks(request):
@@ -57,7 +57,8 @@ def tasks(request):
         query_string = title
         
         try:
-            search_data(query_string,task_id)
+            search_task_data(query_string,task_id)
+            print("calling func")
         except Exception as e:
             obj = Task.objects.get(id = task_id)
             obj.delete()
@@ -135,8 +136,8 @@ def home(request):
     random.shuffle(blogs)
     
     result=[]
-    # for i in topics:
-    #     result=result+search_data(i,2)
+    for i in topics:
+        result=result+search_data(i,2)
 
     print(result)
 
@@ -153,7 +154,7 @@ def home(request):
 
 def community(request):
     if request.method == 'GET':
-        posts =  Post.objects.all()
+        posts =  Post.objects.all().order_by("-created_at")
         
         hot_topics = getTechNews()
             

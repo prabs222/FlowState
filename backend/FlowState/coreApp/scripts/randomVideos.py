@@ -8,7 +8,7 @@ def search_data(string,counter):
     search_params = {
         'part' : 'snippet',
         'q' : string,
-        'key' : settings.YOUTUBE_DATA_API_KEY,
+        'key' : 'AIzaSyCmGzdVd7AnzbXniISA6MpqxaGjRYj5OEM',
         'maxResults' : counter,
         'type' : 'video'
     }

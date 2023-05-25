@@ -14,11 +14,13 @@ def sentiment(text):
     score=result['pos']*100
     return score
 
-def search_data(string, taskId):
+def search_task_data(string, taskId):
     videos = []
     comments = []
     final_comments = []
-
+    print("************************************")
+    print("i am called")
+    
     search_url = 'https://www.googleapis.com/youtube/v3/search'
     video_url = 'https://www.googleapis.com/youtube/v3/videos'
     comment_url = 'https://www.googleapis.com/youtube/v3/commentThreads'
@@ -26,7 +28,7 @@ def search_data(string, taskId):
     search_params = {
         'part' : 'snippet',
         'q' : string,
-        'key' : settings.YOUTUBE_DATA_API_KEY,
+        'key' : 'AIzaSyA6PXcMFY4sXRae4-HVisjz31GUjSyQses',
         'maxResults' : 15,
         'type' : 'video'
     }
@@ -38,7 +40,7 @@ def search_data(string, taskId):
         video_ids.append(result['id']['videoId'])
 
     video_params = {
-        'key' : settings.YOUTUBE_DATA_API_KEY,
+        'key' : 'AIzaSyA6PXcMFY4sXRae4-HVisjz31GUjSyQses',
         'part' : 'snippet,contentDetails,statistics',
         'id' : ','.join(video_ids),
         'maxResults' : 15
@@ -51,14 +53,14 @@ def search_data(string, taskId):
     for video_id in video_ids:
         comments = []
         comment_params = {
-            'key' : settings.YOUTUBE_DATA_API_KEY,
+            'key' : 'AIzaSyA6PXcMFY4sXRae4-HVisjz31GUjSyQses',
             'part' : 'snippet',
             'videoId' : video_id,
             'order': 'relevance'
         }   
     
         r2 = requests.get(comment_url, params=comment_params)
-        print("****************")
+        # print("****************")
         print(r2.json())
         try:
             results2 = r2.json()['items']
