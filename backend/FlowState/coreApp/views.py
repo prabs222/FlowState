@@ -6,7 +6,7 @@ import datetime
 from django.core.paginator import Paginator
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .search import search_data
+from .search import search_task_data
 from coreApp.scripts.techNewsAPI import getTechNews
 from coreApp.scripts.blogs import getBlogs
 from coreApp.scripts.randomVideos import search_data
@@ -15,7 +15,7 @@ import random
 
 # Create your views here.
 
-topics=['django','python','java','node','sql','oops in java','binary tree','sparse matrix']
+topics=['django','python','java','node']
 
 @login_required(login_url="/login/")
 def tasks(request):
@@ -57,7 +57,8 @@ def tasks(request):
         query_string = title
         
         try:
-            search_data(query_string,task_id)
+            search_task_data(query_string,task_id)
+            print("calling func")
         except Exception as e:
             obj = Task.objects.get(id = task_id)
             obj.delete()
@@ -68,6 +69,41 @@ def tasks(request):
         return redirect("/core/task/")  # recorded
     return render(request, "task.html")
 
+
+
+@login_required(login_url="/login/")
+def planYourDay(request):
+    tasks = Task.objects.filter(user =request.user,created_at__gte = datetime.datetime.now().date())
+    if(tasks.count()!=0):
+        page = request.GET.get("page", 1)
+        p = Paginator(tasks, 6)
+        try:
+            tasks = p.page(page)
+        except:
+            tasks = p.page(1)
+    recent_tasks = Task.objects.filter(user=request.user).order_by("-created_at")
+    print(tasks)
+    # context={"blogs": blogs, "page_obj": blogs, "recent_blogs": recent_blogs}
+    context = {"tasks": tasks , "page_obj": tasks,"recent_tasks": recent_tasks}
+    return render(request, "planYourDay.html",context)
+
+@login_required(login_url="/login/")
+def addTask(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        obj = Task.objects.create(user = User.objects.get(username = request.user.username), title=title, description=description)
+        # registration_mail(email)
+        task_id = obj.id
+        query_string = title
+        try:
+            search_data(query_string,task_id)
+        except Exception as e:
+            messages.success(request, "Please enter a descriptive task ")
+            return redirect("/addTask/")  # recorded
+        messages.success(request, "Your task has been added.")
+        return redirect("/planYourDay/")  # recorded
+    return render(request, "addTask.html")
 
 @login_required(login_url="/login")
 def home(request):
@@ -100,10 +136,11 @@ def home(request):
     random.shuffle(blogs)
     
     result=[]
-    # for i in topics:
-    #     result=result+search_data(i,2)
+    for i in topics:
+        result=result+search_data(i,2)
 
     print(result)
+
     
     try:    
         # context = {"videos":  resource_obj, "tasks": today_tasks,"tvideos": videos}
@@ -117,7 +154,7 @@ def home(request):
 
 def community(request):
     if request.method == 'GET':
-        posts =  Post.objects.all()
+        posts =  Post.objects.all().order_by("-created_at")
         
         hot_topics = getTechNews()
             

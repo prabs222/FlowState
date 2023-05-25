@@ -40,7 +40,7 @@
                 {% for post in posts %}
                 <div class="posted_box">
                     <div class="posted_profile_data">
-                        <div class="posted_user_profile_pic"><img src="{% static 'images/user_image.png'%}" alt=""></div>
+                        <div class="posted_user_profile_pic"><img src="{{ post.user.profilepic.url }}" alt=""></div>
                         <div class="posted_username">
                             <h4 class="posted_username">{{post.user.first_name}}</h4>
                             <!-- <p class="user_about">Web Developer, AR/VR, Backend Dev...</p> -->

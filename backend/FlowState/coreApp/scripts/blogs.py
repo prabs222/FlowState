@@ -1,8 +1,8 @@
 import requests
 
 def getBlogs(query,count):
-    api_key = "AIzaSyCP6ULkOoKe244l89UDH7PrD_8H3an_sG4"
-    cx = "a44211d4b08b84178"
+    api_key = "AIzaSyCdnGAc1hGohXbDEgpYrXmKOfxpTmf3NWQ"
+    cx = "732be405134ed4372"
     url = "https://www.googleapis.com/customsearch/v1"
 
     params = {
@@ -16,7 +16,7 @@ def getBlogs(query,count):
     blogs=[]
     if "items" in data:
         for item in data["items"]:
-            blogs.append({'title':item["title"],'url':item["link"],'snippet':item["snippet"]})
+            blogs.append({'title':item["title"],'url':item["link"]})
             if len(blogs)==count:
                 break
     
